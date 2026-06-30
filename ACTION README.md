@@ -289,6 +289,8 @@ Once both test jobs pass, automatically open (or refresh) a PR from `testing` in
 
 Capture each test job's `$GITHUB_STEP_SUMMARY` output and pass it through job outputs so the PR description includes both summaries.
 
+Update the test steps to capture the test summary:
+
 ```yaml
   unit-test:
     runs-on: ubuntu-latest
@@ -309,6 +311,8 @@ Capture each test job's `$GITHUB_STEP_SUMMARY` output and pass it through job ou
           } >> "$GITHUB_OUTPUT"
         env:
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+```
+```yaml
 
   integration-test:
     runs-on: ubuntu-latest
@@ -329,6 +333,8 @@ Capture each test job's `$GITHUB_STEP_SUMMARY` output and pass it through job ou
           } >> "$GITHUB_OUTPUT"
         env:
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+```
+```yaml
 
   create-pr:
     runs-on: ubuntu-latest
